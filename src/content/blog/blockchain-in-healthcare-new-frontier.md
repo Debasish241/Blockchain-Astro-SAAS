@@ -22,7 +22,7 @@ Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
 - Curabitur convallis dolor vel orci sodales, sit amet tincidunt odio feugiat.
 - Donec vel eros nec lacus ullamcorper gravida in vel magna.
 
-## The Future of Decentralized Healthcare Systems
+## The Future of Decentral ized Healthcare Systems
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
 
