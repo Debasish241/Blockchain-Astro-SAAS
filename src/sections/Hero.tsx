@@ -1,8 +1,36 @@
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Circle } from "../components/Circle.tsx";
 import { CutCornerButton } from "../components/CutSornerButton";
 import { Hexagon } from "../components/Hexagon";
+import { useRef } from "react";
 
 export const HeroSection = () => {
+  const iconsahedronRef = useRef(null);
+  const cubRef = useRef(null);
+  const torusRef = useRef(null);
+  const cuboidRef = useRef(null);
+
+  const { scrollYProgress: torusScrollYProgress } = useScroll({
+    target: torusRef,
+    offset: ["start end", "end start"],
+  });
+  const { scrollYProgress: cuboidScrollYProgress } = useScroll({
+    target: cuboidRef,
+    offset: ["start end", "end start"],
+  });
+
+  const { scrollYProgress: cubeScrollYProgress } = useScroll({
+    target: cubRef,
+    offset: ["start end", "end start"],
+  });
+  const { scrollYProgress } = useScroll({
+    target: iconsahedronRef,
+    offset: ["start end", "end start"],
+  });
+  const icosaheadronRotate = useTransform(scrollYProgress, [0, 1], [30, -45]);
+  const cubeRotate = useTransform(cubeScrollYProgress, [0, 1], [100, -45]);
+  const torusRotate = useTransform(torusScrollYProgress, [0, 1], [40, -100]);
+  const cuboidRotate = useTransform(cuboidScrollYProgress, [0, 1], [20, -360]);
   return (
     <section className="py-24 md:py-52 overflow-x-clip">
       <div className="container">
@@ -21,55 +49,76 @@ export const HeroSection = () => {
         <div className="flex justify-center mt-24"></div>
         <div className="inline-flex mt-24 relative z-0">
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <Hexagon className="size-[1100px]" />
+            <Hexagon className="size-[1100px]" size={1100} />
           </div>
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <Hexagon className="size-[1800px]" />
+            <Hexagon className="size-[1800px]" size={1800}/>
           </div>
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <div className="bg-zinc-900 size-[240px] inline-flex items-center justify-center rounded-full outline-[6px] outline outline-fuchsia-500/10 -outline-offset-[6px] absolute left-[200px] -top-[900px]">
-              <img
-                src="/assets/images/cube.png"
-                alt="cube 3D image"
-                className="size-[140px]"
-              />
+            <div
+              className="bg-zinc-900 size-[240px] inline-flex items-center justify-center rounded-full outline-[6px] outline outline-fuchsia-500/10 -outline-offset-[6px] absolute left-[200px] -top-[900px]"
+              ref={cubRef}
+            >
+              <Circle className="absolute " animate>
+                <motion.img
+                  src="/assets/images/cube.png"
+                  alt="cube 3D image"
+                  className="size-[140px]"
+                  style={{ rotate: cubeRotate }}
+                  ref={cubRef}
+                />
+              </Circle>
             </div>
           </div>
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <Circle className="absolute left-[200px] top-[270px]">
-              <img
+            <Circle className="absolute left-[200px] top-[270px]" animate>
+              <motion.img
                 src="/assets/images/cuboid.png"
                 alt="cuboid 3D image"
                 className="size-[140px]"
+                ref={cuboidRef}
+                style={{ rotate: cuboidRotate }}
               />
             </Circle>
           </div>
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <Circle className="absolute -left-[600px] -top-[80px]">
-              <img
+          <div
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            ref={torusRef}
+          >
+            <Circle className="absolute -left-[600px] -top-[80px]" animate>
+              <motion.img
                 src="/assets/images/torus.png"
                 alt="Torus 3D image"
                 className="size-[140px]"
+                style={{ rotate: torusRotate }}
               />
             </Circle>
           </div>
-          <img
-            src="/assets/images/icosahedron.png"
-            alt=""
-            className="absolute w-[calc(100%+100px)] max-w-none -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate-[10%] brightness-[4%] hue-rotate-[240deg]"
-          />
-          <img
-            src="/assets/images/icosahedron.png"
-            alt="Iconsahedron 3D Image"
-            className="w-[500px]"
-          />
+          <motion.div
+            className="inline-flex"
+            style={{ rotate: icosaheadronRotate }}
+            ref={iconsahedronRef}
+          >
+            <img
+              src="/assets/images/icosahedron.png"
+              alt=""
+              className="absolute w-[calc(100%+100px)] max-w-none -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate-[10%] brightness-[4%] hue-rotate-[240deg]"
+            />
+            <img
+              src="/assets/images/icosahedron.png"
+              alt="Iconsahedron 3D Image"
+              className="w-[500px]"
+            />
+          </motion.div>
         </div>
 
         <div className="flex justify-center flex-col items-center mt-40 md:mt-80 gap-4">
           <div className="h-10 w-5 outline outline-[6px] outline-fuchsia-500/10 inline-flex rounded-full justify-center pt-2">
             <div className="h-3 w-1 bg-fuchsia-500 rounded-full "></div>
           </div>
-          <p className="uppercase text-zinc-500 font-extrabold tracking-wider">Scroll to learn more</p>
+          <p className="uppercase text-zinc-500 font-extrabold tracking-wider">
+            Scroll to learn more
+          </p>
         </div>
       </div>
     </section>
