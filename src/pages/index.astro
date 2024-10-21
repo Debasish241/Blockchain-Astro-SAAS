@@ -8,6 +8,7 @@ import { LatestPosts } from "../sections/LatestPosts";
 import { getCollection } from "astro:content";
 import { TestimonialsSection } from "../sections/Testimonials";
 import { CallToAction } from "../sections/CallToAction";
+import { Footer } from "../sections/Footer";
 
 const posts = await getCollection("blog");
 const latestPosts = posts
@@ -26,4 +27,5 @@ const latestPosts = posts
   <LatestPosts latestPosts={latestPosts} />
   <TestimonialsSection />
   <CallToAction />
+  <Footer />
 </DefaultLayout>
