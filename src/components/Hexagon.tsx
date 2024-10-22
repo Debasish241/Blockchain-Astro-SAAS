@@ -8,9 +8,13 @@ import {
 import { twMerge } from "tailwind-merge";
 
 export const Hexagon = (
-  props: ComponentPropsWithoutRef<"svg"> & { size?: number }
+  props: ComponentPropsWithoutRef<"svg"> & {
+    size?: number;
+    reverse?: boolean;
+    duration?: number;
+  }
 ) => {
-  const { className, size = 800 } = props;
+  const { className, size = 800, reverse = false, duration = 30 } = props;
   const pathRef = useRef<SVGPathElement>(null);
   const [totalPathLength, setTotalPathLength] = useState<number>();
 
@@ -54,10 +58,12 @@ export const Hexagon = (
             className
           )}
           initial={{ strokeDashoffset: 0 }}
-          animate={{ strokeDashoffset: totalPathLength * -1 }}
+          animate={{
+            strokeDashoffset: reverse ? totalPathLength : totalPathLength * -1,
+          }}
           transition={{
             repeat: Infinity,
-            duration: 15,
+            duration: duration,
             ease: "linear",
           }}
           style={{
