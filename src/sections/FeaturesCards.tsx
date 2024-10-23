@@ -34,6 +34,7 @@ const cardData = [
   },
 ];
 
+
 export const FeatureCardsSection = () => {
   const [selectedCardIndex, setSelectedCardIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -48,6 +49,7 @@ export const FeatureCardsSection = () => {
       clearTimeout(timeout);
     };
   }, [selectedCardIndex, isHovered]);
+
 
   return (
     <section className="py-24 overflow-x-clip md:-mt-28">
