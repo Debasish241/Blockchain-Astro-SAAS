@@ -10,7 +10,7 @@ export const Card = (
 ) => {
   const { color, children, className, buttonText } = props;
   return (
-    <div className={twMerge("relative z-0 p-8 md:p-10  ", className)}>
+    <div className={twMerge("relative z-0 p-8 md:p-10 group  ", className)}>
       {/* <div className="absolute size-16 rounded-xl bg-fuchsia-500 top-1.5 right-1.5 -z-10 blur-lg opacity-0 group-hover:opacity-100 transition duration-300"></div> */}
       <div
         className={twMerge(
