@@ -36,11 +36,11 @@ export const HeroSection = () => {
     <section className="py-24 md:py-52 overflow-x-clip">
       <div className="container">
         {/* Text Section */}
-        <div className="relative z-10 text-center">
+        <div className="relative  z-10 text-center">
           <p className="uppercase font-extrabold text-zinc-500 tracking-wider">
             Introducing Blackforge
           </p>
-          <h1 className="font-heading font-black text-5xl md:text-6xl lg:text-3xl mt-4 max-w-3xl mx-auto">
+          <h1 className="font-heading font-black text-6xl md:text-6xl lg:text-5xl mt-4 max-w-3xl mx-auto">
             The Future of Blockchain is Here.
           </h1>
           <p className="text-xl md:text-2xl max-w-xl mx-auto mt-6 text-zinc-400">
